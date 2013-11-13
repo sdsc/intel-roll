@@ -1,0 +1,48 @@
+#%Module1.0
+module-whatis "Intel compilers"
+module-whatis "Version: VERSION"
+module-whatis "Description: Intel compilers (C/C++/Fortran)"
+
+# If unloading, also unload any intel-dependent modules
+if {[module-info mode switch1] || [module-info mode switch3]} {
+  # Get the command line that invoked this process; unload only if switching
+  # from intel to another (compiler) module, e.g., "module switch intel gnu"
+  set commandWords [split [exec /bin/ps -p [pid] -o args=] " "]
+  set switchFrom [lindex [split [module-info name] "/"] 0]
+  set switchTo [lindex [split [lindex $commandWords end] "/"] 0]
+  set unloadApps [expr ! [string equal $switchTo $switchFrom]]
+} elseif {[module-info mode remove]} {
+  set unloadApps 1
+} else {
+  set unloadApps 0
+}
+if {$unloadApps && [info exists env(LOADEDMODULES)]} {
+  foreach app [split $env(LOADEDMODULES) ":"] {
+    # Check whether any intel-dependent module dir contains a module w/this name
+    if {[llength [glob -nocomplain /opt/modulefiles/*/.intel/$app]] > 0} {
+      puts stderr "Unloading compiler-dependent module $app"
+      module unload [lindex [split $app "/"] 0]
+    }
+  }
+}
+
+# Add all intel-dependent module dirs to the search path
+foreach path [glob -nocomplain /opt/modulefiles/*/.intel] {
+  prepend-path MODULEPATH $path
+}
+
+# Compiler environment modifications
+set intelHome [glob -nocomplain /opt/intel/composer*]
+setenv INTELHOME $intelHome
+prepend-path PATH $intelHome/bin/intel64
+prepend-path MANPATH $intelHome/man
+setenv TBBROOT $intelHome/tbb
+prepend-path LD_LIBRARY_PATH $intelHome/compiler/lib/intel64:$intelHome/ipp/../compiler/lib/intel64:$intelHome/ipp/lib/intel64:$intelHome/compiler/lib/intel64:$intelHome/mkl/lib/intel64:$intelHome/tbb/lib/intel64//cc4.1.0_libc2.4_kernel2.6.16.21:/opt/gridengine/lib/lx26-amd64:$intelHome/debugger/lib/intel64:$intelHome/mpirt/lib/intel64
+prepend-path LIBRARY_PATH $intelHome/compiler/lib/intel64:$intelHome/ipp/../compiler/lib/intel64:$intelHome/ipp/lib/intel64:$intelHome/compiler/lib/intel64:$intelHome/mkl/lib/intel64:$intelHome/tbb/lib/intel64//cc4.1.0_libc2.4_kernel2.6.16.21:/opt/gridengine/lib/lx26-amd64:$intelHome/debugger/lib/intel64:$intelHome/mpirt/lib/intel64
+setenv INTEL_LICENSE_FILE /opt/flexlm/license/license-intel.txt
+setenv MKL_ROOT $intelHome/mkl
+setenv IPPROOT $intelHome/ipp
+setenv FPATH $intelHome/mkl/include
+setenv CPATH $intelHome/mkl/include:$intelHome/tbb/include
+setenv NLSPATH $intelHome/compiler/lib/intel64/locale/%l_%t/%N:$intelHome/ipp/lib/intel64/locale/%l_%t/%N:$intelHome/mkl/lib/intel64/locale/%l_%t/%N:$intelHome/debugger/intel64/locale/%l_%t/%N
+setenv INCLUDE $intelHome/ipp/include:$intelHome/mkl/include

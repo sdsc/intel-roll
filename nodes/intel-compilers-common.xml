@@ -1,0 +1,48 @@
+<?xml version="1.0" standalone="no"?>
+
+<kickstart>
+
+<description>
+Intel Compilers
+http://software.intel.com/en-us/intel-compilers/
+</description>
+
+<copyright>
+Copyright (c) 2000 - 2011 The Regents of the University of California.
+All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
+</copyright>
+
+<changelog>
+</changelog>
+
+<package>intel-compilerproc-117</package>
+<package>intel-compilerproc-devel-117</package>
+<package>intel-compilerpro-devel-117</package>
+<package>intel-compilerprof-117</package>
+<package>intel-compilerprof-devel-117</package>
+<package>intel-compilers-2013.1.117</package>
+<package>intel-idb-117</package>
+<package>intel-ipp-117</package>
+<package>intel-ipp-devel-117</package>
+<package>intel-mkl-117</package>
+<package>intel-mkl-devel-117</package>
+<package>intel-openmp-117</package>
+<package>intel-openmp-devel-117</package>
+<package>intel-sourcechecker-devel-117</package>
+
+<package>intel-compilerproc-common-117</package>
+<package>intel-compilerpro-common-117</package>
+<package>intel-compilerprof-common-117</package>
+<package>intel-compilerpro-vars-117</package>
+<package>intel-idbcdt-117</package>
+<package>intel-idb-common-117</package>
+<package>intel-ipp-common-117</package>
+<package>intel-mkl-common-117</package>
+<package>intel-sourcechecker-common-117</package>
+<package>intel-tbb-117</package>
+<package>intel-tbb-devel-117</package>
+
+<package>intel-modules</package>
+<package>intel-roll-test</package>
+
+</kickstart>
