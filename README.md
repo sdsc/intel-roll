@@ -5,9 +5,9 @@
 This roll bundles the installation of Intel(r) compilers which are part of the
 Intel® Composer XE Suite.
 
-*NOTE: The actual compilers and licenses **must** be obtained from Intel(r)
-directly as this roll **only** wraps the compilers into a Rocks roll for
-installation into a Rocks cluster.*
+**NOTE: The actual compilers and licenses must be obtained from Intel(r)
+directly as this roll only wraps the compilers into a Rocks roll for
+installation into a Rocks cluster.**
 
 For more information about the Intel Compilers please visit the official web
 page:
