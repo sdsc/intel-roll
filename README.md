@@ -23,10 +23,7 @@ Fortran Composer XE 2013.
 To build/install this roll you must have root access to a Rocks development
 machine (e.g., a frontend or development appliance).
 
-If your Rocks development machine does *not* have Internet access you must
-download the appropriate intel source file(s) using a machine that does have
-Internet access and copy them into the `src/intel-compilers` directory on your
-Rocks development machine.
+In addition, non-SDSC users must also place a `tar.gz` bundle of the Intel(r) installation source provided by Intel(r) in the `src/intel-compilers` directory. That file should be named to match the pattern listed in `src/intel/version.mk` and the `version.mk` file should be edited appropriately.
 
 
 ## Dependencies
