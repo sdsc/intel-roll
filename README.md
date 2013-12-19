@@ -79,10 +79,16 @@ run the test scripts execute the following command(s):
 
 ```shell
 % /root/rolltests/intel.t 
-ok 1 - intel is installed
-ok 2 - intel test run
-ok 3 - intel module installed
-ok 4 - intel version module installed
-ok 5 - intel version module link created
-1..5
+ok 1 - intel compilers installed
+ok 2 - intel C compiler works
+ok 3 - compiled C program runs
+ok 4 - compile C program correct output
+ok 5 - intel FORTRAN compiler works
+ok 6 - compiled FORTRAN program runs
+ok 7 - compile FORTRAN program correct output
+ok 8 - man works for intel
+ok 9 - intel module installed
+ok 10 - intel version module installed
+ok 11 - intel version module link created
+1..11
 ```
