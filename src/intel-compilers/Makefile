@@ -57,8 +57,6 @@
 # $Log$
 
 PKGROOT         = /opt/intel
-SOURCEC         = l_ccompxe_$(VERSION)
-SOURCEF         = l_fcompxe_$(VERSION)
 REDHAT.ROOT     = $(CURDIR)/../../
 RPM.EXTRAS      = %define __os_install_post /usr/lib/rpm/brp-compress
 
@@ -69,9 +67,6 @@ build: $(SRC_DIRS)
 	if test -f $(SOURCEC).tgzaa; then \
 	  cat $(SOURCEC).tgz* | tar zxvf -; \
 	  cat $(SOURCEF).tgz* | tar zxvf -; \
-	else \
-	  tar zxvf $(SOURCEC).tgz; \
-	  tar zxvf $(SOURCEF).tgz; \
 	fi
         
 install::
@@ -83,14 +78,22 @@ install::
 	  if test ! -d $(REDHAT.ROOT)/RPMS/x86_64; then \
 	    mkdir -p $(REDHAT.ROOT)/RPMS/x86_64; \
 	  fi; \
-	  cd $(SOURCEC)/rpms; \
-	  cp *noarch*rpm $(REDHAT.ROOT)/RPMS/noarch; \
-	  cp *x86_64*rpm $(REDHAT.ROOT)/RPMS/x86_64; \
-	  cd ../../$(SOURCEF)/rpms; \
-	  cp *noarch*rpm $(REDHAT.ROOT)/RPMS/noarch; \
-	  cp *x86_64*rpm $(REDHAT.ROOT)/RPMS/x86_64 \
+          dirs="$(L_CCOMPXE_SOURCE) $(L_FCOMPXE_SOURCE) $(L_IPP_SOURCE) $(L_MKL_SOURCE) $(L_TBB_SOURCE)"; \
+          for dir in $${dirs}; do \
+              if test -e $${dir}/rpms; then \
+                  RPATH=$${dir}/rpms; \
+                  echo $${RPATH}; \
+              elif test -e $${dir}/rpm; then  \
+                  RPATH=$${dir}/rpm; \
+                  echo $${RPATH}; \
+              fi; \
+              if test `ls $${RPATH}|grep -c noarch` -gt 0; then \
+                  cp $${RPATH}/*noarch*rpm $(REDHAT.ROOT)/RPMS/noarch; \
+              fi; \
+              if test `ls $${RPATH}|grep -c x86_64` -gt 0; then \
+                  cp $${RPATH}/*x86_64*rpm $(REDHAT.ROOT)/RPMS/x86_64; \
+              fi; \
+          done \
 	)
 
 clean::
-	rm -fr $(SOURCEC)
-	rm -fr $(SOURCEF)

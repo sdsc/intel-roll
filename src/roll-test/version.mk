@@ -1,3 +1,3 @@
 NAME	= intel-roll-test
 VERSION	= 1
-RELEASE	= 9
+RELEASE	= 0

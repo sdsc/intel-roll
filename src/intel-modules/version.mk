@@ -1,3 +1,3 @@
 NAME    = intel-modules
-VERSION = 2013.1.117
-RELEASE = 9
+VERSION = 2013_sp1.2.144
+RELEASE = 0
