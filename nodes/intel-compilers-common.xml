@@ -20,7 +20,7 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 <package>intel-compilerpro-devel-144</package>
 <package>intel-compilerprof-144</package>
 <package>intel-compilerprof-devel-144</package>
-<package>intel-compilers-2013_sp1.2.144</package>
+<package>intel-compilers-2013_sp1</package>
 <package>intel-gdb-144</package>
 <package>intel-gdb-cdt-144</package>
 <package>intel-gdb-cdt-source-144</package>
