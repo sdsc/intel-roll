@@ -1,6 +1,7 @@
 NAME                    = intel-compilers
 VERSION                 = 2013_sp1.2.144
-RELEASE                 = 0
+RELEASE                 = 1
+RPM.EXTRAS         = AutoReq:No
 
 SRC_SUBDIR              = intel-compilers
 
