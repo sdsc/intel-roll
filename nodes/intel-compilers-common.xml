@@ -51,7 +51,23 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 <package>intel-openmp-144</package>
 <package>intel-openmp-devel-144</package>
 <package>intel-sourcechecker-devel-144</package>
-
+<package>intel-compilerproc-common-144</package>
+<package>intel-idb-common-144</package>
+<package>intel-compilerpro-common-144</package>
+<package>intel-ipp-common-144</package>
+<package>intel-compilerpro-common-pset-144</package>
+<package>intel-mkl-cluster-common-144</package>
+<package>intel-compilerprof-common-144</package>
+<package>intel-mkl-common-144</package>
+<package>intel-compilerpro-vars-144</package>
+<package>intel-mkl-f95-common-144</package>
+<package>intel-gdb-common-144</package>
+<package>intel-sourcechecker-common-144</package>
+<package>intel-gdb-source-144</package>
+<package>intel-tbb-144</package>
+<package>intel-gdb-toplevel-144</package>
+<package>intel-tbb-devel-144</package>
+<package>intel-idbcdt-144</package>
 <package>intel-modules</package>
 <package>intel-roll-test</package>
 
