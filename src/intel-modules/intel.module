@@ -32,7 +32,7 @@ foreach path [glob -nocomplain /opt/modulefiles/*/.intel] {
 }
 
 # Compiler environment modifications
-set intelHome [glob -nocomplain /opt/intel/composer*]
+set intelHome /opt/intel/composer_xe_VERSION
 setenv INTELHOME $intelHome
 prepend-path PATH $intelHome/bin/intel64
 prepend-path MANPATH $intelHome/man
