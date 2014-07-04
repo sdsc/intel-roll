@@ -56,12 +56,15 @@
 #
 # $Log$
 
-PKGROOT         = /opt/intel
-REDHAT.ROOT     = $(CURDIR)/../../
-RPM.EXTRAS      = %define __os_install_post /usr/lib/rpm/brp-compress
+PKGROOT     = /opt/intel
+REDHAT.ROOT = $(CURDIR)/../../
+RPM.EXTRAS  = %define __os_install_post /usr/lib/rpm/brp-compress
 
 -include $(ROCKSROOT)/etc/Rules.mk
 include pull.mk
+
+RPM_DIRS = $(L_CCOMPXE_SOURCE) $(L_FCOMPXE_SOURCE) $(L_IPP_SOURCE) \
+           $(L_MKL_SOURCE) $(L_TBB_SOURCE)
 
 build: $(SRC_DIRS)
 	if test -f $(SOURCEC).tgzaa; then \
@@ -70,30 +73,26 @@ build: $(SRC_DIRS)
 	fi
         
 install::
-	( \
-	  mkdir -p $(ROOT)/$(PKGROOT); \
-	  if test ! -d $(REDHAT.ROOT)/RPMS/noarch; then \
-	    mkdir -p $(REDHAT.ROOT)/RPMS/noarch; \
+	if test ! -d $(REDHAT.ROOT)/RPMS/noarch; then \
+	  mkdir -p $(REDHAT.ROOT)/RPMS/noarch; \
+	fi
+	if test ! -d $(REDHAT.ROOT)/RPMS/x86_64; then \
+	  mkdir -p $(REDHAT.ROOT)/RPMS/x86_64; \
+	fi
+	for dir in $(RPM_DIRS); do \
+	  if test -e $${dir}/rpms; then \
+	    RPATH=$${dir}/rpms; \
+	    echo $${RPATH}; \
+	  elif test -e $${dir}/rpm; then  \
+	    RPATH=$${dir}/rpm; \
+	    echo $${RPATH}; \
 	  fi; \
-	  if test ! -d $(REDHAT.ROOT)/RPMS/x86_64; then \
-	    mkdir -p $(REDHAT.ROOT)/RPMS/x86_64; \
+	  if test `ls $${RPATH}|grep -c noarch` -gt 0; then \
+	    cp $${RPATH}/*noarch*rpm $(REDHAT.ROOT)/RPMS/noarch; \
 	  fi; \
-          dirs="$(L_CCOMPXE_SOURCE) $(L_FCOMPXE_SOURCE) $(L_IPP_SOURCE) $(L_MKL_SOURCE) $(L_TBB_SOURCE)"; \
-          for dir in $${dirs}; do \
-              if test -e $${dir}/rpms; then \
-                  RPATH=$${dir}/rpms; \
-                  echo $${RPATH}; \
-              elif test -e $${dir}/rpm; then  \
-                  RPATH=$${dir}/rpm; \
-                  echo $${RPATH}; \
-              fi; \
-              if test `ls $${RPATH}|grep -c noarch` -gt 0; then \
-                  cp $${RPATH}/*noarch*rpm $(REDHAT.ROOT)/RPMS/noarch; \
-              fi; \
-              if test `ls $${RPATH}|grep -c x86_64` -gt 0; then \
-                  cp $${RPATH}/*x86_64*rpm $(REDHAT.ROOT)/RPMS/x86_64; \
-              fi; \
-          done \
-	)
+	  if test `ls $${RPATH}|grep -c x86_64` -gt 0; then \
+	    cp $${RPATH}/*x86_64*rpm $(REDHAT.ROOT)/RPMS/x86_64; \
+	  fi; \
+	done
 
 clean::
