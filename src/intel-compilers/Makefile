@@ -67,10 +67,6 @@ RPM_DIRS = $(L_CCOMPXE_SOURCE) $(L_FCOMPXE_SOURCE) $(L_IPP_SOURCE) \
            $(L_MKL_SOURCE) $(L_TBB_SOURCE)
 
 build: $(SRC_DIRS)
-	if test -f $(SOURCEC).tgzaa; then \
-	  cat $(SOURCEC).tgz* | tar zxvf -; \
-	  cat $(SOURCEF).tgz* | tar zxvf -; \
-	fi
         
 install::
 	if test ! -d $(REDHAT.ROOT)/RPMS/noarch; then \
