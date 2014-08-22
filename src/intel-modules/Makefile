@@ -56,7 +56,7 @@
 #
 # $Log$
 
-PKGROOT = /opt/modulefiles/compilers/intel
+PKGROOT = /opt/modulefiles/compilers
 REDHAT.ROOT = $(CURDIR)/../../
 
 -include $(ROCKSROOT)/etc/Rules.mk
@@ -65,11 +65,17 @@ include Rules.mk
 build:
 
 install::
-	  mkdir -p $(ROOT)/$(PKGROOT)
-	  cp intel.module $(ROOT)/$(PKGROOT)/$(VERSION)
-	  cp intel.version $(ROOT)/$(PKGROOT)/.version.$(VERSION)
-	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/$(VERSION)
-	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/.version.$(VERSION)
-	  ln -s $(PKGROOT)/.version.$(VERSION) $(ROOT)/$(PKGROOT)/.version
+	  mkdir -p -m 755 $(ROOT)/$(PKGROOT)/intel
+	  cp intel.module $(ROOT)/$(PKGROOT)/intel/$(VERSION)
+	  cp intel.version $(ROOT)/$(PKGROOT)/intel/.version.$(VERSION)
+	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/intel/$(VERSION)
+	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/intel/.version.$(VERSION)
+	  ln -s $(PKGROOT)/intel/.version.$(VERSION) $(ROOT)/$(PKGROOT)/intel/.version
+	  mkdir -p -m 755 $(ROOT)/$(PKGROOT)/mkl
+	  cp mkl.module $(ROOT)/$(PKGROOT)/mkl/$(VERSION)
+	  cp mkl.version $(ROOT)/$(PKGROOT)/mkl/.version.$(VERSION)
+	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/mkl/$(VERSION)
+	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/mkl/.version.$(VERSION)
+	  ln -s $(PKGROOT)/mkl/.version.$(VERSION) $(ROOT)/$(PKGROOT)/mkl/.version
 
 clean::

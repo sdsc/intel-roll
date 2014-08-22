@@ -200,13 +200,19 @@ SKIP: {
   $output = `$setup; man icc 2>&1`;
   ok($output =~ /Intel/, 'man works for intel');
   
-  skip 'modules not installed', 3 if ! $modulesInstalled;
+  skip 'modules not installed', 6 if ! $modulesInstalled;
   `/bin/ls /opt/modulefiles/compilers/intel/[0-9.]* 2>&1`;
   ok($? == 0, 'intel module installed');
   `/bin/ls /opt/modulefiles/compilers/intel/.version.[0-9.]* 2>&1`;
   ok($? == 0, 'intel version module installed');
   ok(-l '/opt/modulefiles/compilers/intel/.version',
      'intel version module link created');
+  `/bin/ls /opt/modulefiles/compilers/mkl/[0-9.]* 2>&1`;
+  ok($? == 0, 'mkl module installed');
+  `/bin/ls /opt/modulefiles/compilers/mkl/.version.[0-9.]* 2>&1`;
+  ok($? == 0, 'mkl version module installed');
+  ok(-l '/opt/modulefiles/compilers/mkl/.version',
+     'mkl version module link created');
 
 }
 
