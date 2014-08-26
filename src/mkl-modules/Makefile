@@ -56,7 +56,7 @@
 #
 # $Log$
 
-PKGROOT = /opt/modulefiles/compilers/intel
+PKGROOT = /opt/modulefiles/applications/mkl
 REDHAT.ROOT = $(CURDIR)/../../
 
 -include $(ROCKSROOT)/etc/Rules.mk
@@ -66,8 +66,8 @@ build:
 
 install::
 	  mkdir -p -m 755 $(ROOT)/$(PKGROOT)
-	  cp intel.module $(ROOT)/$(PKGROOT)/$(VERSION)
-	  cp intel.version $(ROOT)/$(PKGROOT)/.version.$(VERSION)
+	  cp mkl.module $(ROOT)/$(PKGROOT)/$(VERSION)
+	  cp mkl.version $(ROOT)/$(PKGROOT)/.version.$(VERSION)
 	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/$(VERSION)
 	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/.version.$(VERSION)
 	  ln -s $(PKGROOT)/.version.$(VERSION) $(ROOT)/$(PKGROOT)/.version

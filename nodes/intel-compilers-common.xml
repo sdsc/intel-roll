@@ -66,6 +66,7 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 <package>intel-tbb-devel-144</package>
 <package>intel-idbcdt-144</package>
 <package>intel-modules</package>
+<package>mkl-modules</package>
 <package>intel-roll-test</package>
 
 </kickstart>
