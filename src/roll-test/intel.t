@@ -207,11 +207,11 @@ SKIP: {
   ok($? == 0, 'intel version module installed');
   ok(-l '/opt/modulefiles/compilers/intel/.version',
      'intel version module link created');
-  `/bin/ls /opt/modulefiles/compilers/mkl/[0-9.]* 2>&1`;
+  `/bin/ls /opt/modulefiles/applications/mkl/[0-9.]* 2>&1`;
   ok($? == 0, 'mkl module installed');
-  `/bin/ls /opt/modulefiles/compilers/mkl/.version.[0-9.]* 2>&1`;
+  `/bin/ls /opt/modulefiles/applications/mkl/.version.[0-9.]* 2>&1`;
   ok($? == 0, 'mkl version module installed');
-  ok(-l '/opt/modulefiles/compilers/mkl/.version',
+  ok(-l '/opt/modulefiles/applications/mkl/.version',
      'mkl version module link created');
 
 }
