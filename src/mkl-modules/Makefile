@@ -69,6 +69,7 @@ install::
 	  cp mkl.module $(ROOT)/$(PKGROOT)/$(VERSION)
 	  cp mkl.version $(ROOT)/$(PKGROOT)/.version.$(VERSION)
 	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/$(VERSION)
+	  perl -pi -e 's/INTELVERS/$(INTELVERS)/g' $(ROOT)/$(PKGROOT)/$(VERSION)
 	  perl -pi -e 's/VERSION/$(VERSION)/g' $(ROOT)/$(PKGROOT)/.version.$(VERSION)
 	  ln -s $(PKGROOT)/.version.$(VERSION) $(ROOT)/$(PKGROOT)/.version
 
