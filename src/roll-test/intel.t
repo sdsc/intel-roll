@@ -173,34 +173,29 @@ if($appliance =~ /$installedOnAppliancesPattern/) {
 SKIP: {
 
   skip 'intel compilers not installed', 10 if ! $isInstalled;
-  my $modulesInstalled = -f '/etc/profile.d/modules.sh';
-  my $setup = $modulesInstalled ?
-              ". /etc/profile.d/modules.sh; module load intel" :
-              'echo > /dev/null'; # noop
 
-  $output = `$setup; icc -o $TESTFILE.c.exe $TESTFILE.c 2>&1`;
+  $output = `module load intel; icc -o $TESTFILE.c.exe $TESTFILE.c 2>&1`;
   ok($? == 0, 'intel C compiler works');
-  $output = `$setup; ./$TESTFILE.c.exe`;
+  $output = `module load intel; ./$TESTFILE.c.exe`;
   ok($? == 0, 'compiled C program runs');
   like($output, qr/Hello world/, 'compile C program correct output');
 
-  $output = `$setup; ifort -o $TESTFILE.f.exe $TESTFILE.f 2>&1`;
+  $output = `module load intel; ifort -o $TESTFILE.f.exe $TESTFILE.f 2>&1`;
   ok($? == 0, 'intel FORTRAN compiler works');
-  $output = `$setup; ./$TESTFILE.f.exe`;
+  $output = `module load intel; ./$TESTFILE.f.exe`;
   ok($? == 0, 'compiled FORTRAN program runs');
   like($output, qr/Hello world/, 'compile FORTRAN program correct output');
 
-  $output = `$setup; icc -o $TESTFILE.mkl.exe $TESTFILE.mkl.c -mkl 2>&1`;
+  $output = `module load intel; icc -o $TESTFILE.mkl.exe $TESTFILE.mkl.c -mkl 2>&1`;
   ok($? == 0, 'intel C compiler works w/mkl');
-  $output = `$setup; ./$TESTFILE.mkl.exe 5`;
+  $output = `module load intel; ./$TESTFILE.mkl.exe 5`;
   ok($? == 0, 'compiled C mkl program runs');
   like($output, qr/115\s+150\s+185\s+220\s+255/,
                 'compile C mkl program correct output');
 
-  $output = `$setup; man icc 2>&1`;
+  $output = `module load intel; man icc 2>&1`;
   ok($output =~ /Intel/, 'man works for intel');
   
-  skip 'modules not installed', 6 if ! $modulesInstalled;
   `/bin/ls /opt/modulefiles/compilers/intel/[0-9.]* 2>&1`;
   ok($? == 0, 'intel module installed');
   `/bin/ls /opt/modulefiles/compilers/intel/.version.[0-9.]* 2>&1`;
