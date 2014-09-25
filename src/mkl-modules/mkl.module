@@ -3,6 +3,7 @@ module-whatis "Intel Math Kernel Library"
 module-whatis "Version: VERSION"
 
 set intelHome /opt/intel/composer_xe_INTELVERS
+setenv MKLHOME $intelHome/mkl
 prepend-path MANPATH $intelHome/man
 prepend-path LD_LIBRARY_PATH $intelHome/mkl/lib/intel64
 prepend-path LIBRARY_PATH $intelHome/mkl/lib/intel64
