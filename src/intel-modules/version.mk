@@ -1,8 +1,11 @@
-NAME        = intel-modules
-RELEASE     = 5
-PKGROOT     = /opt/modulefiles/compilers/intel
+PACKAGE     = intel
+CATEGORY    = compilers
 
-VERSION_SRC = $(REDHAT.ROOT)/src/intel-compilers/version.mk
+NAME        = $(PACKAGE)-modules
+RELEASE     = 6
+PKGROOT     = /opt/modulefiles/$(CATEGORY)/$(PACKAGE)
+
+VERSION_SRC = $(REDHAT.ROOT)/src/$(PACKAGE)-compilers/version.mk
 VERSION_INC = version.inc
 include $(VERSION_INC)
 
