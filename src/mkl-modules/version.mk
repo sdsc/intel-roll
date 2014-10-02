@@ -1,6 +1,9 @@
-NAME        = mkl-modules
-RELEASE     = 2
-PKGROOT     = /opt/modulefiles/applications/mkl
+PACKAGE     = mkl
+CATEGORY    = applications
+
+NAME        = $(PACKAGE)-modules
+RELEASE     = 3
+PKGROOT     = /opt/modulefiles/$(CATEGORY)/$(PACKAGE)
 
 VERSION_SRC = $(REDHAT.ROOT)/src/intel-compilers/version.mk
 VERSION_INC = version.inc
