@@ -4,6 +4,7 @@
 *.tar.gz
 *.tgz
 *.zip
+*.iso
 BUILD
 RPMS
 SPECS
@@ -26,3 +27,8 @@ rocks-version.mk
 *-modules.spec
 *-modules.spec.mk
 *.version.mk
+disk*
+roll-*.spec
+roll-*.spec.mk
+roll-*.xml
+roll-profile.mk
