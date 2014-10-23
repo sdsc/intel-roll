@@ -8,7 +8,7 @@ DESC=`eval ${DESC_CMD}`
 if [ -z "${DESC}" ]
 then
     # Try to support using the tagged downloads
-    DESC=`pwd | grep -oe 'perftest-.\+' | sed 's/perftest-//g'`
+    DESC=`pwd | grep -oe 'intel-roll-.\+' | sed 's/intel-roll-//g'`
     LOCAL_REV="-github_archive"
 fi
 
