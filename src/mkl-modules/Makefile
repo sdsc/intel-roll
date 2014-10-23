@@ -9,7 +9,8 @@ build:
 # instead of the source package VERSION.
 $(VERSION_INC): $(VERSION_SRC)
 	/bin/grep 'L_MKL_VERSION.*=' $(VERSION_SRC) | sed 's/L_MKL_//' > $@
-	
+	/bin/grep '\<VERSION.*=' $(VERSION_SRC) | sed 's/VERSION/INTELVERS/' >> $@
+
 install::
 	mkdir -p -m 755 $(ROOT)/$(PKGROOT)
 	cp *.module $(ROOT)/$(PKGROOT)/$(VERSION)
