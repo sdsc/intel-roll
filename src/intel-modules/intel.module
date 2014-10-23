@@ -46,7 +46,7 @@ prepend-path MANPATH $intelHome/man/en_US:$intelHome/man/en_US:$intelHome/debugg
 setenv TBBROOT $intelHome/tbb
 prepend-path LD_LIBRARY_PATH $intelHome/compiler/lib/intel64:$intelHome/mpirt/lib/intel64:$intelHome/ipp/../compiler/lib/intel64:$intelHome/ipp/lib/intel64:$intelHome/compiler/lib/intel64:$intelHome/mkl/lib/intel64:$intelHome/tbb/lib/intel64/gcc4.4
 setenv LIBRARY_PATH $intelHome/compiler/lib/intel64:$intelHome/ipp/../compiler/lib/intel64:$intelHome/ipp/lib/intel64:$intelHome/compiler/lib/intel64:$intelHome/mkl/lib/intel64:$intelHome/tbb/lib/intel64/gcc4.4
-setenv INTEL_LICENSE_FILE /opt/flexlm/license/license-intel.txt:$intelHome/licenses:/opt/intel/licenses:/root/intel/licenses
+setenv INTEL_LICENSE_FILE $intelHome/licenses:/opt/intel/licenses:/root/intel/licenses
 setenv MKL_ROOT $intelHome/mkl
 setenv MKLROOT $intelHome/mkl
 setenv IPPROOT $intelHome/ipp

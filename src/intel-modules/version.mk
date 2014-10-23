@@ -2,7 +2,7 @@ PACKAGE     = intel
 CATEGORY    = compilers
 
 NAME        = $(PACKAGE)-modules
-RELEASE     = 7 
+RELEASE     = 8
 PKGROOT     = /opt/modulefiles/$(CATEGORY)/$(PACKAGE)
 
 VERSION_SRC = $(REDHAT.ROOT)/src/$(PACKAGE)-compilers/version.mk
