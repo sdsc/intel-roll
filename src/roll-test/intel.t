@@ -10,6 +10,7 @@ my $appliance = $#ARGV >= 0 ? $ARGV[0] :
                 -d '/export/rocks/install' ? 'Frontend' : 'Compute';
 my $installedOnAppliancesPattern = '^(?!Frontend).';
 my $isInstalled = -d '/opt/intel';
+my $compilersInstalled = "intel" eq "intel";
 my $output;
 
 my $TESTFILE = 'tmpintel';
@@ -166,42 +167,46 @@ END
 
 # intel-compilers-common.xml
 if($appliance =~ /$installedOnAppliancesPattern/) {
-  ok($isInstalled, 'intel compilers installed');
+  ok($isInstalled, 'intel installed');
 } else {
-  ok(! $isInstalled, 'intel compilers not installed');
+  ok(! $isInstalled, 'intel not installed');
 }
 SKIP: {
 
-  skip 'intel compilers not installed', 10 if ! $isInstalled;
+  skip 'intel not installed', 10 if ! $isInstalled;
 
-  $output = `module load intel; icc -o $TESTFILE.c.exe $TESTFILE.c 2>&1`;
-  ok($? == 0, 'intel C compiler works');
-  $output = `module load intel; ./$TESTFILE.c.exe`;
-  ok($? == 0, 'compiled C program runs');
-  like($output, qr/Hello world/, 'compile C program correct output');
+  if($compilersInstalled) {
 
-  $output = `module load intel; ifort -o $TESTFILE.f.exe $TESTFILE.f 2>&1`;
-  ok($? == 0, 'intel FORTRAN compiler works');
-  $output = `module load intel; ./$TESTFILE.f.exe`;
-  ok($? == 0, 'compiled FORTRAN program runs');
-  like($output, qr/Hello world/, 'compile FORTRAN program correct output');
+    $output = `module load intel; icc -o $TESTFILE.c.exe $TESTFILE.c 2>&1`;
+    ok($? == 0, 'intel C compiler works');
+    $output = `module load intel; ./$TESTFILE.c.exe`;
+    ok($? == 0, 'compiled C program runs');
+    like($output, qr/Hello world/, 'compile C program correct output');
 
-  $output = `module load intel; icc -o $TESTFILE.mkl.exe $TESTFILE.mkl.c -mkl 2>&1`;
-  ok($? == 0, 'intel C compiler works w/mkl');
-  $output = `module load intel; ./$TESTFILE.mkl.exe 5`;
-  ok($? == 0, 'compiled C mkl program runs');
-  like($output, qr/115\s+150\s+185\s+220\s+255/,
-                'compile C mkl program correct output');
+    $output = `module load intel; ifort -o $TESTFILE.f.exe $TESTFILE.f 2>&1`;
+    ok($? == 0, 'intel FORTRAN compiler works');
+    $output = `module load intel; ./$TESTFILE.f.exe`;
+    ok($? == 0, 'compiled FORTRAN program runs');
+    like($output, qr/Hello world/, 'compile FORTRAN program correct output');
 
-  $output = `module load intel; man icc 2>&1`;
-  ok($output =~ /Intel/, 'man works for intel');
+    $output = `module load intel; man icc 2>&1`;
+    ok($output =~ /Intel/, 'man works for intel');
   
-  `/bin/ls /opt/modulefiles/compilers/intel/[0-9.]* 2>&1`;
-  ok($? == 0, 'intel module installed');
-  `/bin/ls /opt/modulefiles/compilers/intel/.version.[0-9.]* 2>&1`;
-  ok($? == 0, 'intel version module installed');
-  ok(-l '/opt/modulefiles/compilers/intel/.version',
-     'intel version module link created');
+    `/bin/ls /opt/modulefiles/compilers/intel/[0-9.]* 2>&1`;
+    ok($? == 0, 'intel module installed');
+    `/bin/ls /opt/modulefiles/compilers/intel/.version.[0-9.]* 2>&1`;
+    ok($? == 0, 'intel version module installed');
+    ok(-l '/opt/modulefiles/compilers/intel/.version',
+       'intel version module link created');
+
+  }
+
+  $output = `module load mkl; gcc -o $TESTFILE.mkl.exe $TESTFILE.mkl.c -I\${MKL_ROOT}/include -L\${MKL_ROOT}/intel64/lib -lmkl_gf_lp64 -lmkl_core -lmkl_gnu_thread -lpthread -lm -lgomp 2>&1`;
+  ok($? == 0, 'mkl compiles w/gnu C');
+  $output = `module load mkl; ./$TESTFILE.mkl.exe 5`;
+  ok($? == 0, 'mkl runs w/gnu C');
+  like($output, qr/115\s+150\s+185\s+220\s+255/, 'mkl correct output w/gu C');
+
   `/bin/ls /opt/modulefiles/applications/mkl/[0-9.]* 2>&1`;
   ok($? == 0, 'mkl module installed');
   `/bin/ls /opt/modulefiles/applications/mkl/.version.[0-9.]* 2>&1`;
