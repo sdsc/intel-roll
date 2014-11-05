@@ -62,7 +62,7 @@ RPM.EXTRAS  = %define __os_install_post /usr/lib/rpm/brp-compress
 -include $(ROCKSROOT)/etc/Rules.mk
 include pull.mk
 
-RPM_DIRS = $(SOURCE_DIR) $(L_FCOMPXE_DIR)
+RPM_DIRS = $(L_IPP_DIR) $(L_MKL_DIR) $(L_TBB_DIR)
 
 build: $(SRC_DIRS)
         

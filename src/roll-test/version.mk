@@ -1,4 +1,4 @@
-NAME       = intel-roll-test
+NAME       = $(ROLLNAME)-roll-test
 VERSION    = 1
 RELEASE    = 4
 PKGROOT    = /root/rolltests

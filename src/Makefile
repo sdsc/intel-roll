@@ -62,5 +62,15 @@ default:
 
 copyright rpm pkg clean::
 	for i in $(SRCDIRS); do \
-	  (cd $$i && $(MAKE) $@) || exit 2; \
+	  ROLLNAME="$(ROLLNAME)"; \
+	  if test "$(ROLLNAME)" != "intel"; then \
+	    if test "$$i" = "./intel-compilers" -o \
+	            "$$i" = "./intel-modules"; then \
+	      continue; \
+	    fi; \
+	    if test "$$i" = "./intel-libraries"; then \
+	      ROLLNAME=intel; \
+	    fi; \
+	  fi; \
+	  (cd $$i && $(MAKE) ROLLNAME="$${ROLLNAME}" $@) || exit 2; \
 	done
