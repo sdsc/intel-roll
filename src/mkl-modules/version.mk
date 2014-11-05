@@ -1,8 +1,8 @@
 PACKAGE     = mkl
 CATEGORY    = applications
 
-NAME        = $(PACKAGE)-modules
-RELEASE     = 5
+NAME        = sdsc-$(PACKAGE)-modules
+RELEASE     = 6
 PKGROOT     = /opt/modulefiles/$(CATEGORY)/$(PACKAGE)
 
 VERSION_SRC = $(REDHAT.ROOT)/src/intel-libraries/version.mk

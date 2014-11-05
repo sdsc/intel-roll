@@ -1,8 +1,8 @@
 PACKAGE     = intel
 CATEGORY    = compilers
 
-NAME        = $(PACKAGE)-modules
-RELEASE     = 8
+NAME        = sdsc-$(PACKAGE)-modules
+RELEASE     = 9
 PKGROOT     = /opt/modulefiles/$(CATEGORY)/$(PACKAGE)
 
 VERSION_SRC = $(REDHAT.ROOT)/src/$(PACKAGE)-compilers/version.mk

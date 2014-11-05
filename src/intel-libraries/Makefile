@@ -60,7 +60,8 @@ REDHAT.ROOT = $(CURDIR)/../../
 RPM.EXTRAS  = %define __os_install_post /usr/lib/rpm/brp-compress
 
 -include $(ROCKSROOT)/etc/Rules.mk
-include pull.mk
+include $(SDSCDEVEL)/Pull.mk
+include $(SDSCDEVEL)/Rules.mk
 
 RPM_DIRS = $(L_IPP_DIR) $(L_MKL_DIR) $(L_TBB_DIR)
 

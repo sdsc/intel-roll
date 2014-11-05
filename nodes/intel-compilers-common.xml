@@ -13,9 +13,10 @@ All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 </copyright>
 
 <!-- Intel Roll module/test RPM's -->
-<package>intel-modules</package>
-<package>mkl-modules</package>
-<package>intel-roll-test</package>
+<package>sdsc-intel-modules</package>
+<package>sdsc-intel-roll-test</package>
+<package>sdsc-mkl-modules</package>
+<package>sdsc-mkl-roll-test</package>
 
 <!-- Intel(R) Parallel Studio XE Composer Edition for Linux* -->
 <package>intel-gdb-090</package>

@@ -1,6 +1,6 @@
-NAME              = intel-compilers
+NAME              = sdsc-intel-compilers
 VERSION           = 2015.0.090
-RELEASE           = 0
+RELEASE           = 1
 PKGROOT           = /opt/intel
 
 SRC_SUBDIR        = intel-compilers

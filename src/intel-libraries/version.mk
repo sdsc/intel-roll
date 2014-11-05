@@ -1,6 +1,6 @@
-NAME          = intel-libraries
+NAME          = sdsc-intel-libraries
 VERSION       = 2015.0.090
-RELEASE       = 0
+RELEASE       = 1
 PKGROOT       = /opt/intel
 
 SRC_SUBDIR    = intel-libraries
