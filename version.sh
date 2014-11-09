@@ -1,11 +1,11 @@
 #!/bin/sh
 
-ROCKS_VERSION=`cat /etc/rocks-release | awk '{print $3}'`
+ROCKS_VERSION=`cat /etc/rocks-release 2>/dev/null | awk '{print $3}'`
 DESC_CMD="git describe --match 'v${ROCKS_VERSION}' 2>/dev/null | sed \"s/v\([0-9\.]*\)-*\([0-9]*\)-*\([0-9a-z]*\)/\1 \2 \3/\""
 DESC=`eval ${DESC_CMD}`
 #DESC=`git describe --match 'v*' 2>/dev/null | sed "s/v\([0-9\.]*\)-*\([0-9]*\)-*\([0-9a-z]*\)/\1 \2 \3/"`
 
-if [ -z "${DESC}" ]
+if [ ! -d "./.git" ] && [ -z "${DESC}" ]
 then
     # Try to support using the tagged downloads
     DESC=`pwd | grep -oe 'intel-roll-.\+' | sed 's/intel-roll-//g'`
@@ -15,15 +15,32 @@ fi
 VERSION=`echo ${DESC} | awk '{ print $1 }' | tr "." " "`
 COMMIT=`echo ${DESC} | awk '{ print $2 }'`
 HASH=`echo ${DESC} | awk '{ print $3}'`
+
 VERSION_MAJ=`echo ${VERSION} | awk '{ print $1 }'`
+if [ -z "${VERSION_MAJ}" ]; then
+    VERSION_MAJ="0"
+fi
+
 VERSION_MIN=`echo ${VERSION} | awk '{ print $2 }'`
+if [ -z "${VERSION_MIN}" ]; then
+    VERSION_MIN="0"
+fi
+
 VERSION_DOT=`echo ${VERSION} | awk '{ print $3 }'`
-[ "${VERSION_DOT}" != "" ] && VERSION_DOT="."${VERSION_DOT}
+if [ -n "${VERSION_DOT}" ]; then
+    VERSION_DOT="."${VERSION_DOT}
+fi
+
 VERSION_REV=${COMMIT}
-VERSION_HASH=${HASH}
 if [ -z "${VERSION_REV}" ]; then
     VERSION_REV="0"
 fi
+
+VERSION_HASH=${HASH}
+if [ -z "${VERSION_HASH}" ]; then
+    VERSION_HASH="g"
+fi
+
 
 #Allow local revision identifiers
 #mimicing backports this is "-<identifier>"
@@ -82,3 +99,4 @@ done
 VERSION="${VERSION_MAJ}.${VERSION_MIN}.${VERSION_REV}${LOCAL_REV}"
 
 echo $VERSION
+
