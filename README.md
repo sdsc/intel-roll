@@ -23,7 +23,17 @@ Fortran Composer XE 2013.
 To build/install this roll you must have root access to a Rocks development
 machine (e.g., a frontend or development appliance).
 
-In addition, non-SDSC users must also place a `tar.gz` bundle of the Intel(r) installation source provided by Intel(r) in the `src/intel-compilers` directory. That file should be named to match the pattern listed in `src/intel/version.mk` and the `version.mk` file should be edited appropriately.
+In addition, non-SDSC users must also place the `tgz` bundles of the Intel(r)
+compiler source (`l_ccompxe_<VERSION>.tgz` and `l_fcompxe_<VERSION>.tgz`)
+obtained from Intel(r) in the `src/intel-compilers` directory and the `tgz`
+bundles for the Intel(r) Performance Primitives (`l_ipp_<VERSION>.tgz`),
+Intel(r) Threaded Building Blocks (`l_tbb_<VERSION>.tgz`) and Intel(r) Math
+Kernel Library (`l_mkl_<VERSION>.tgz`) in the `src/intel-libraries` directory.
+
+If the versions of the Intel(r) compilers and/or libraries obtained from
+Intel(r) are newer than those listed in the `src/intel-compilers/version.mk` or
+`src/intel-libraries/version.mk` files the appropriate `version.mk` file must
+also be edited.
 
 
 ## Dependencies
