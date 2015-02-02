@@ -63,7 +63,7 @@ RPM.EXTRAS  = %define __os_install_post /usr/lib/rpm/brp-compress
 include $(SDSCDEVEL)/Pull.mk
 include $(SDSCDEVEL)/Rules.mk
 
-RPM_DIRS = $(SOURCE_DIR)
+RPM_DIRS = $(SOURCE_DIR) $(L_FCOMPXE_DIR)
 
 build: $(SRC_DIRS)
         
