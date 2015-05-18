@@ -64,8 +64,9 @@ copyright rpm pkg clean::
 	for i in $(SRCDIRS); do \
 	  ROLLNAME="$(ROLLNAME)"; \
 	  if test "$(ROLLNAME)" != "intel"; then \
-	    if test "$$i" = "./intel-compilers" -o \
-	            "$$i" = "./intel-modules"; then \
+	    if test "$$i" != "./intel-libraries" -a \
+	            "$$i" != "./roll-test" -a \
+	            "$$i" != "./mkl-modules"; then \
 	      continue; \
 	    fi; \
 	    if test "$$i" = "./intel-libraries"; then \
