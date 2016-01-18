@@ -57,26 +57,6 @@
 # $Log$
 # Revision 1.1  2013/08/22 17:07:44  jpg
 #
-#
-# bring back python roll
-#
-# Revision 1.5  2012/12/14 21:54:16  clem
-# adding sqlite-devel to the boostrap so that support to slite3 is built into python
-#
-# Revision 1.4  2012/11/27 00:49:12  phil
-# Copyright Storm for Emerald Boa
-#
-# Revision 1.3  2012/05/06 05:49:19  phil
-# Copyright Storm for Mamba
-#
-# Revision 1.2  2011/07/23 02:31:16  phil
-# Viper Copyright
-#
-# Revision 1.1  2011/07/22 17:54:09  anoop
-# Added bootstrap script to python roll. Required for itself
-# and for the bio roll
-#
-
 . $ROCKSROOT/src/roll/etc/bootstrap-functions.sh
 
 
