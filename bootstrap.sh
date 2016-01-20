@@ -54,9 +54,6 @@
 # 
 # @Copyright@
 
-# $Log$
-# Revision 1.1  2013/08/22 17:07:44  jpg
-#
 . $ROCKSROOT/src/roll/etc/bootstrap-functions.sh
 
 
