@@ -12,11 +12,25 @@ Copyright (c) 2000 - 2014 The Regents of the University of California.
 All rights reserved. Rocks(r) v5.1 www.rocksclusters.org
 </copyright>
 
-<edge from="client">
-  <to>intel-compilers-common</to>
+<edge from="compute">
+    <to>intel-compilers-common</to>
 </edge>
-<order head="client">
-  <tail>intel-compilers-common</tail>
+<order head="compute">
+    <tail>intel-compilers-common</tail>
+</order>
+
+<edge from="login">
+    <to>intel-compilers-common</to>
+</edge>
+<order head="login">
+    <tail>intel-compilers-common</tail>
+</order>
+
+<edge from="devel">
+    <to>intel-compilers-common</to>
+</edge>
+<order head="devel">
+    <tail>intel-compilers-common</tail>
 </order>
 
 </graph>
