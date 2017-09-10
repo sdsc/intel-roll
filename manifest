@@ -116,6 +116,7 @@ intel-tbb-144
 intel-tbb-164
 intel-tbb-devel-144
 intel-tbb-devel-164
+roll-intel-kickstart
 sdsc-intel-compilers
 sdsc-intel-compilers-2015
 sdsc-intel-libraries
