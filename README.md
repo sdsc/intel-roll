@@ -1,5 +1,15 @@
 # SDSC "intel" roll
 
+### THIS ROLL HAS BEEN DEPRECATED
+
+The intel-roll was written to support installation of the 2013 and 2015
+versions of the Intel compilers and runtime libraries. More recent Intel
+versions have been progressively difficult to package into roll form, and this
+roll does not support them. For most clusters, we recommend using Intel's
+installation procedure, either to install on all nodes of your cluster or to
+install on a single node from which the compiler directory can be exported for
+NFS mounting on other cluster nodes.
+
 ## Overview
 
 This roll bundles the installation of Intel&reg; compilers which are part of the
