@@ -1,7 +1,7 @@
 NAME       = sdsc-$(ROLLNAME)-roll-test
 VERSION    = 1
-RELEASE    = 7
+RELEASE    = 8
 PKGROOT    = /root/rolltests
 
 RPM.EXTRAS = AutoReq:No
-RPM.FILES  = $(PKGROOT)/intel.t
+RPM.FILES  = $(PKGROOT)/$(ROLLNAME).t
