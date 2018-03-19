@@ -2,7 +2,7 @@ PACKAGE     = mkl
 CATEGORY    = applications
 
 NAME        = sdsc-$(PACKAGE)-modules
-RELEASE     = 8
+RELEASE     = 9
 PKGROOT     = /opt/modulefiles/$(CATEGORY)/$(PACKAGE)
 
 VERSION_SRC = $(REDHAT.ROOT)/src/intel-compilers/version.mk
@@ -15,5 +15,5 @@ include $(VERSION2_INC)
 
 EXTRA_MODULE_VERSIONS = 11.2.2.164
 
-RPM.EXTRAS  = AutoReq:No
-RPM.PREFIX  = $(PKGROOT)
+RPM.EXTRAS   = AutoReq:No\nAutoProv:No
+RPM.PREFIX   = $(PKGROOT)

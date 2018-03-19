@@ -1,6 +1,6 @@
 NAME          = sdsc-intel-libraries
 VERSION       = 2013_sp1.2.144
-RELEASE       = 1
+RELEASE       = 2
 PKGROOT       = /opt/intel
 
 SRC_SUBDIR    = intel-libraries
@@ -25,4 +25,5 @@ L_TBB_DIR     = $(L_TBB_PKG:%.$(L_TBB_SUFFIX)=%)
 
 TAR_GZ_PKGS   = $(L_IPP_PKG) $(L_MKL_PKG) $(L_TBB_PKG)
 
-RPM.EXTRAS    = AutoReq:No
+RPM.EXTRAS    = AutoReq:No\nAutoProv:No
+RPM.PREFIX    = $(PKGROOT)

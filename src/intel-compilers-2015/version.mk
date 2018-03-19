@@ -1,6 +1,6 @@
 NAME           = sdsc-intel-compilers-2015
 VERSION        = 2015.2.164
-RELEASE        = 0
+RELEASE        = 1
 PKGROOT        = /opt/intel
 
 SRC_SUBDIR     = intel-compilers-2015
@@ -15,4 +15,5 @@ L_MKL_VERSION  = 11.2.2.164
 
 TAR_GZ_PKGS    = $(SOURCE_PKG) $(L_FCOMPXE_PKG)
 
-RPM.EXTRAS     = AutoReq:No
+RPM.EXTRAS     = AutoReq:No\nAutoProv:No
+RPM.PREFIX     = $(PKGROOT)
