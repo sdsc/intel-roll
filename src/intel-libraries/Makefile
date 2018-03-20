@@ -67,6 +67,7 @@ RPM_DIRS = $(L_IPP_DIR) $(L_MKL_DIR) $(L_TBB_DIR)
 build: $(SRC_DIRS)
         
 install::
+	mkdir -m 755 -p $(ROOT)/$(PKGROOT)
 	if test ! -d $(REDHAT.ROOT)/RPMS/noarch; then \
 	  mkdir -p $(REDHAT.ROOT)/RPMS/noarch; \
 	fi
